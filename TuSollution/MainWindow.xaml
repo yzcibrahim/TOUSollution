@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:TuSollution"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute" />
+    </Window.CommandBindings>
     <Grid>
         <Button Content="Yeni Kişi" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="45" Width="69" Click="Button_Click"/>
         <DataGrid x:Name="peopleGrid" Margin="22,76,474,184"/>
+        <Button Content="Sil" Command="ApplicationCommands.Delete" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Height="45" Width="58"/>
 
     </Grid>
 </Window>

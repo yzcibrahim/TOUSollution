@@ -13,10 +13,9 @@ namespace WpfRehber.Repositories
     {
         static List<Person> _people=new List<Person>();
 
-        public void Add(Person person)
+        public void AddOrUpdate(Person person)
         {
             _people.Add(person);
-            
         }
         public void Delete(Person person)
         {

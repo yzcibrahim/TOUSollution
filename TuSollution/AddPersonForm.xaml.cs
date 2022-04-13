@@ -22,7 +22,7 @@ namespace WpfRehber
     public partial class AddPersonForm : Window
     {
         public Person person { get; set; } = new Person();
-        private PersonRepository _repository;
+        PersonRepository _repository;
         public AddPersonForm()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace WpfRehber
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _repository.Add(person);
+            _repository.AddOrUpdate(person);
             _repository.SaveChanges();
             MessageBox.Show("Kayıt başarılı");
             this.Close();

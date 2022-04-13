@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TuSollution.Entities;
 using WpfRehber;
 using WpfRehber.Repositories;
 
@@ -9,6 +10,7 @@ namespace TuSollution
     /// </summary>
     public partial class MainWindow : Window
     {
+        PersonRepository _rep;
         public MainWindow()
         {
 
@@ -26,8 +28,21 @@ namespace TuSollution
 
         private void RefreshGrid()
         {
-            PersonRepository _rep = new PersonRepository();
+            _rep = new PersonRepository();
             peopleGrid.ItemsSource = _rep.List();
+        }
+
+        private void CommandBinding_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void CommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+             var silinecek = (Person)peopleGrid.SelectedItem;
+            _rep.Delete(silinecek);
+            _rep.SaveChanges();
+            RefreshGrid();
         }
     }
 }
