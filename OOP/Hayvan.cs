@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace OOP
 {
-    public class Hayvan:Canli
+    public class Hayvan:ICanli
     {
-
+        public string Ad { get; set; }
+        public string Soyad { get; set; }
         public void Ses()
         {
             Console.WriteLine("BEN HAYVANIMmmmm");
         }
 
-        public override void KendiniTanit()
+        public void KendiniTanit()
         {
             Console.WriteLine($"ben hayvanım benim adıım{Ad}");
            // base.KendiniTanit();

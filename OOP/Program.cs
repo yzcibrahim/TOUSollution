@@ -8,12 +8,17 @@ namespace OOP
         {
             Console.WriteLine("Hello World!");
 
-            Canli canli1 = new Hayvan();
-            Canli hayvan = new Hayvan();
-            Canli ins = new Insan();
+            ICanli canli1 = new Hayvan();
+            ICanli hayvan = new Hayvan();
+            ICanli ins = new Insan();
 
-            ins.TamAd = "ibrahim YAZICI";
-            Console.WriteLine(ins.TamAd);
+            //ins.
+
+            ins.Ad = "ibrahim YAZICI";
+
+           // ((IYasli)ins).YasKac();
+
+            Console.WriteLine(ins.Ad);
             ins.KendiniTanit();
             canli1.KendiniTanit();
             hayvan.KendiniTanit();

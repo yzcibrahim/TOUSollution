@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace OOP
 {
-    public class Insan : Canli
+    public class Insan : IYasli
     {
-        public override void KendiniTanit()
+        public string Ad { get; set; }
+        public string Soyad { get; set; }
+        public void KendiniTanit()
         {
             Console.WriteLine($"ben insanım benim Adım {Ad}");
+        }
+
+        public int YasKac()
+        {
+            return 15;
         }
     }
 }

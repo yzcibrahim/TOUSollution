@@ -8,7 +8,7 @@ namespace OOP
 {
     public class HayvanFactory
     {
-        public Canli HayvanUret(string tip)
+        public ICanli HayvanUret(string tip)
         {
             if (tip == "H")
             {
