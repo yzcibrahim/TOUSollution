@@ -10,7 +10,7 @@ namespace TuSollution
     /// </summary>
     public partial class MainWindow : Window
     {
-        PersonRepository _rep;
+        PersonRepositoryJson _rep;
         public MainWindow()
         {
 
@@ -28,7 +28,7 @@ namespace TuSollution
 
         private void RefreshGrid()
         {
-            _rep = new PersonRepository();
+            _rep = new PersonRepositoryJson();
             peopleGrid.ItemsSource = _rep.List();
         }
 

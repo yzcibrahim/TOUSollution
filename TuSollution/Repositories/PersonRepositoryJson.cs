@@ -9,7 +9,7 @@ using TuSollution.Entities;
 
 namespace WpfRehber.Repositories
 {
-    public class PersonRepository
+    public class PersonRepositoryJson
     {
         static List<Person> _people=new List<Person>();
 

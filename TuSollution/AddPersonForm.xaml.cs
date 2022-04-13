@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TuSollution.Entities;
+using WpfRehber.Helpers;
 using WpfRehber.Repositories;
 
 namespace WpfRehber
@@ -22,12 +23,15 @@ namespace WpfRehber
     public partial class AddPersonForm : Window
     {
         public Person person { get; set; } = new Person();
-        PersonRepository _repository;
+        PersonRepositoryJson _repository;
         public AddPersonForm()
         {
             InitializeComponent();
+           
             mainGrid.DataContext = this;
-            _repository = new PersonRepository();
+            //  _repository = new PersonRepositoryJson();
+            RepositoryFactory factory = new RepositoryFactory();
+            _repository = factory.CreateRepository("Person");
             List<Person> liste= _repository.List();
             int maxId = liste.Max(c => c.Id);
             person.Id = maxId+1;
