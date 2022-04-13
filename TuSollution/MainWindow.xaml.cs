@@ -14,19 +14,20 @@ namespace TuSollution
 
             InitializeComponent();
 
-            PersonRepository _rep = new PersonRepository();
-            peopleGrid.ItemsSource = _rep.List();
+            RefreshGrid();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddPersonForm frmAddPerson = new AddPersonForm();
             frmAddPerson.ShowDialog();
 
+            RefreshGrid();
+        }
+
+        private void RefreshGrid()
+        {
             PersonRepository _rep = new PersonRepository();
             peopleGrid.ItemsSource = _rep.List();
-
-
         }
     }
 }

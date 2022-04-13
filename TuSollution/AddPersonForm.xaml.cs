@@ -22,20 +22,21 @@ namespace WpfRehber
     public partial class AddPersonForm : Window
     {
         public Person person { get; set; } = new Person();
+        private PersonRepository _repository;
         public AddPersonForm()
         {
             InitializeComponent();
-
             mainGrid.DataContext = this;
-
-            
-
+            _repository = new PersonRepository();
+            List<Person> liste= _repository.List();
+            int maxId = liste.Max(c => c.Id);
+            person.Id = maxId+1;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PersonRepository _rep = new PersonRepository();
-            _rep.Add(person);
+            _repository.Add(person);
+            _repository.SaveChanges();
             MessageBox.Show("Kayıt başarılı");
             this.Close();
         }

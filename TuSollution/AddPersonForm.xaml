@@ -12,6 +12,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
        
         <Grid.ColumnDefinitions>
@@ -19,24 +20,31 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column = "0" Grid.Row = "0" Orientation = "Horizontal">
+            <Label Content = "Id"  VerticalAlignment = "Center" Width = "70"/>
+            <TextBox IsReadOnly="True" Text = "{Binding Path=person.Id}" VerticalAlignment = "Center"
+            Width = "200">
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Column = "0" Grid.Row = "1" Orientation = "Horizontal">
             <Label Content = "Ad"  VerticalAlignment = "Center" Width = "70"/>
             <TextBox Text = "{Binding Path=person.Name}" VerticalAlignment = "Center"
             Width = "200">
             </TextBox>
         </StackPanel>
-        <StackPanel Grid.Column = "0" Grid.Row = "1" Orientation = "Horizontal">
+        <StackPanel Grid.Column = "0" Grid.Row = "2" Orientation = "Horizontal">
             <Label Content = "Soyad"  VerticalAlignment = "Center" Width = "70"/>
             <TextBox Text = "{Binding Path=person.Surname}" VerticalAlignment = "Center"
             Width = "200">
             </TextBox>
         </StackPanel>
-        <StackPanel Grid.Column = "0" Grid.Row = "2" Orientation = "Horizontal">
+        <StackPanel Grid.Column = "0" Grid.Row = "3" Orientation = "Horizontal">
             <Label Content = "Telefon"  VerticalAlignment = "Center" Width = "70"/>
             <TextBox Text = "{Binding Path=person.Phone}" VerticalAlignment = "Center"
             Width = "200">
             </TextBox>
         </StackPanel>
-        <StackPanel Grid.Column = "0" Grid.Row = "3" Orientation = "Horizontal" >
+        <StackPanel Grid.Column = "0" Grid.Row = "4" Orientation = "Horizontal" >
             <Button Click="Button_Click" Content="Kaydet" Margin="180,0,0,0" HorizontalAlignment="Right"  />
 
         </StackPanel>
