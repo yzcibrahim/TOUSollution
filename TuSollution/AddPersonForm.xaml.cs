@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TuSollution.Entities;
+using DataAccessLayer.Entities;
 using WpfRehber.Helpers;
-using WpfRehber.Repositories;
+using DataAccessLayer.Repositories;
 
 namespace WpfRehber
 {
@@ -23,7 +23,7 @@ namespace WpfRehber
     public partial class AddPersonForm : Window
     {
         public Person person { get; set; } = new Person();
-        PersonRepositoryJson _repository;
+        IRepositoryPerson _repository;
         public AddPersonForm()
         {
             InitializeComponent();

@@ -1,15 +1,15 @@
-﻿using System;
+﻿using DataAccessLayer.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WpfRehber.Repositories;
 
 namespace WpfRehber.Helpers
 {
     public class RepositoryFactory
     {
-        public PersonRepositoryJson CreateRepository(string repStr)
+        public IRepositoryPerson CreateRepository(string repStr)
         {
             if (repStr == "Person")
             {

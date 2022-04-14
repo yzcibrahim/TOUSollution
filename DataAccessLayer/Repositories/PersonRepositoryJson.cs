@@ -1,15 +1,15 @@
-﻿using System;
+﻿using DataAccessLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using TuSollution.Entities;
 
-namespace WpfRehber.Repositories
+namespace DataAccessLayer.Repositories
 {
-    public class PersonRepositoryJson
+    public class PersonRepositoryJson: IRepositoryPerson
     {
         static List<Person> _people=new List<Person>();
 

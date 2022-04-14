@@ -1,7 +1,9 @@
-﻿using System.Windows;
-using TuSollution.Entities;
+﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories;
+using System;
+using System.Windows;
 using WpfRehber;
-using WpfRehber.Repositories;
+using WpfRehber.Helpers;
 
 namespace TuSollution
 {
@@ -10,7 +12,7 @@ namespace TuSollution
     /// </summary>
     public partial class MainWindow : Window
     {
-        PersonRepositoryJson _rep;
+        IRepositoryPerson _rep;
         public MainWindow()
         {
 
@@ -28,7 +30,8 @@ namespace TuSollution
 
         private void RefreshGrid()
         {
-            _rep = new PersonRepositoryJson();
+            RepositoryFactory factory = new RepositoryFactory();
+            _rep = factory.CreateRepository("Person");
             peopleGrid.ItemsSource = _rep.List();
         }
 
@@ -43,6 +46,21 @@ namespace TuSollution
             _rep.Delete(silinecek);
             _rep.SaveChanges();
             RefreshGrid();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string deger = txtInput.Text;
+            //string temp = deger;
+
+            char[] arr = deger.ToCharArray();
+            Array.Reverse(arr);
+
+            string reversDeger = string.Join("", arr);
+            if (reversDeger == deger)
+                MessageBox.Show("palindromdur");
+            else
+                MessageBox.Show("değildir");
         }
     }
 }

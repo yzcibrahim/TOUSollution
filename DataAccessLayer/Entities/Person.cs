@@ -1,4 +1,4 @@
-﻿namespace TuSollution.Entities
+﻿namespace DataAccessLayer.Entities
 {
     public class Person
     {

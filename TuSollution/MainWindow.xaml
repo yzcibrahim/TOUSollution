@@ -13,6 +13,8 @@
         <Button Content="Yeni Kişi" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="45" Width="69" Click="Button_Click"/>
         <DataGrid x:Name="peopleGrid" Margin="22,76,474,184"/>
         <Button Content="Sil" Command="ApplicationCommands.Delete" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Height="45" Width="58"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Margin="519,123,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="519,153,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
