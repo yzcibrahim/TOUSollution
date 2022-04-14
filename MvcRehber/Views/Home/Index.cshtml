@@ -1,4 +1,4 @@
-﻿@model List<KisiTest>
+﻿@model List<Person>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -25,29 +25,25 @@
 </div>
 <div style="text-align:center">
     <table>
-        @foreach (var kisi in Model)
-        {
         <tr>
-            <th>@kisi.Ad</th>
-            <th>@kisi.Soyad</th>
-            <th>Country</th>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Telefon</th>
         </tr>
+        @{
+            foreach (Person kisi in Model)
+            {
+                <tr>
+                    <td>@kisi.Id</td>
+                    <td>@kisi.Name</td>
+                    <td>@kisi.Surname</td>
+                    <td>@kisi.Phone</td>
+                </tr>
+            }
         }
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
+
+
 
     </table>
 </div>

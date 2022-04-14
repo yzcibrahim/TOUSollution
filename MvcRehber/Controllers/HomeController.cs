@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MvcRehber.Helpers;
 using MvcRehber.Models;
 using System;
 using System.Collections.Generic;
@@ -18,17 +21,36 @@ namespace MvcRehber.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            List<KisiTest> liste = new List<KisiTest>();
-            liste.Add(new KisiTest() { Soyad = "yazıcı", Ad = "ibrahim" });
-            liste.Add(new KisiTest() { Soyad = "asd", Ad = "asd" });
-            liste.Add(new KisiTest() { Soyad = "fsderfg", Ad = "wrg" });
+            IRepositoryPerson _reopsitory = Repositoryfactory.CreateRepo("PERSON");
+
+            List<Person> liste = _reopsitory.List();
             return View(liste);
+            #region MyRegion
+            //KisiTest mdl = new KisiTest();
+            //mdl.Ad = "ibrahim";
+            //mdl.Soyad = "yazıcı";
+            //return View(mdl); 
+            #endregion
+        }
+        [HttpGet]
+        public IActionResult CreatePerson()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreatePerson(Person person)
+        {
+            IRepositoryPerson repositoryPerson = Repositoryfactory.CreateRepo("PERSON");
+            repositoryPerson.AddOrUpdate(person);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy(KisiTest kisi)
         {
+           
 
             return View(kisi);
         }
