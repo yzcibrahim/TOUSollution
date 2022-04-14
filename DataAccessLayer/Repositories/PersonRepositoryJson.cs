@@ -24,7 +24,7 @@ namespace DataAccessLayer.Repositories
 
         public List<Person> List()
         {
-            string fileContent = File.ReadAllText("Kişiler.json");
+            string fileContent = File.ReadAllText(@"C:\Users\iyazici\source\repos\Tu\WpfRehber\TuSollution\bin\Debug\net5.0-windows\Kişiler.json");
             _people = JsonSerializer.Deserialize<List<Person>>(fileContent);
             return _people.ToList();
         }
@@ -32,7 +32,7 @@ namespace DataAccessLayer.Repositories
         public void SaveChanges() 
         {
             string serializedPeople=JsonSerializer.Serialize(_people);
-            File.WriteAllText("Kişiler.json", serializedPeople);
+            File.WriteAllText(@"C:\Users\iyazici\source\repos\Tu\WpfRehber\TuSollution\bin\Debug\net5.0-windows\Kişiler.json", serializedPeople);
 
         }
 

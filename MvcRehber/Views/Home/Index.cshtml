@@ -1,0 +1,53 @@
+﻿@model List<KisiTest>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{Layout = null;}
+<style>
+    th,td {
+        border: 1px solid #dddddd;
+        padding:8px;
+    }
+    table {
+        font-family: arial, sans-serif;
+        width: 33%;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    tr:nth-child(2n) {
+        background-color: #dddddd;
+    }
+</style>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div style="text-align:center">
+    <table>
+        @foreach (var kisi in Model)
+        {
+        <tr>
+            <th>@kisi.Ad</th>
+            <th>@kisi.Soyad</th>
+            <th>Country</th>
+        </tr>
+        }
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+
+    </table>
+</div>
