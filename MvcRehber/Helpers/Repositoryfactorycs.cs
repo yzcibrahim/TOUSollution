@@ -9,7 +9,7 @@ namespace MvcRehber.Helpers
     public  class Repositoryfactory
     {
         static PersonRepositoryJson _repoPErson;
-        public  IRepositoryPerson CreateRepo(string tip)
+        public static  IRepositoryPerson CreateRepo(string tip)
         {
             if (_repoPErson == null)
             {

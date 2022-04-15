@@ -23,13 +23,16 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-<div style="text-align:center">
+
+<div>
+    <div><a asp-action="CreatePerson" style="margin-left: 34%;">Yeni Kişi</a></div>
     <table>
         <tr>
             <th>Id</th>
             <th>Ad</th>
             <th>Soyad</th>
             <th>Telefon</th>
+            <th></th>
         </tr>
         @{
             foreach (Person kisi in Model)
@@ -39,6 +42,9 @@
                     <td>@kisi.Name</td>
                     <td>@kisi.Surname</td>
                     <td>@kisi.Phone</td>
+                    <td><a onclick="return eminMisiniz(@kisi.Id)" asp-route-id="@kisi.Id" asp-action="Delete" >Sil</a>
+                        <a  asp-route-id="@kisi.Id" asp-action="CreatePerson">Düzenle</a>
+                    </td>
                 </tr>
             }
         }
@@ -47,3 +53,12 @@
 
     </table>
 </div>
+
+<script>
+    function eminMisiniz(id) {
+      //  alert(id + " id li Kayıt silinecek emin misiniz?");
+        var dialogResult = confirm(id + " id li Kayıt silinecek emin misiniz?");
+        console.log(dialogResult);
+        return dialogResult;
+    }
+</script>

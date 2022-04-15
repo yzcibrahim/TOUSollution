@@ -15,13 +15,34 @@ namespace DataAccessLayer.Repositories
 
         public void AddOrUpdate(Person person)
         {
-            _people.Add(person);
+            if (person.Id <= 0)
+            {
+                person.Id = _people.Max(c => c.Id) + 1;
+                _people.Add(person);
+            }
+            else
+            {
+                Person updateEdilecek = _people.First(c => c.Id == person.Id);
+                updateEdilecek.Name = person.Name;
+                updateEdilecek.Surname = person.Surname;
+                updateEdilecek.Phone = person.Phone;
+            }
             SaveChanges();
         }
         public void Delete(Person person)
         {
             _people.Remove(person);
             SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            Person silinecek = _people.FirstOrDefault(c => c.Id == id);
+            //first:kayıt yoksa hata alır,firstordefault:kayıt yoksa null döner,single:kayıt 1 adet değilse hata alır
+            if(silinecek!=null)
+            {
+                Delete(silinecek);
+            }
         }
 
         public List<Person> List()

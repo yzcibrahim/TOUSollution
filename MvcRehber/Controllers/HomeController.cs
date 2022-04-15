@@ -15,18 +15,17 @@ namespace MvcRehber.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        IRepositoryPerson _personRepository;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _personRepository = Repositoryfactory.CreateRepo("PERSON");
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            IRepositoryPerson _reopsitory = Repositoryfactory.CreateRepo("PERSON");
-
-            List<Person> liste = _reopsitory.List();
+            List<Person> liste = _personRepository.List();
             return View(liste);
             #region MyRegion
             //KisiTest mdl = new KisiTest();
@@ -36,15 +35,26 @@ namespace MvcRehber.Controllers
             #endregion
         }
         [HttpGet]
-        public IActionResult CreatePerson()
+        public IActionResult CreatePerson(int? id)
         {
-            return View();
+            Person model = new Person();
+            if(id.HasValue && id>0)
+            {
+                List<Person> people=_personRepository.List();
+                model = people.First(c => c.Id == id);
+            }
+            return View(model);
         }
         [HttpPost]
         public IActionResult CreatePerson(Person person)
         {
-            IRepositoryPerson repositoryPerson = Repositoryfactory.CreateRepo("PERSON");
-            repositoryPerson.AddOrUpdate(person);
+            _personRepository.AddOrUpdate(person);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _personRepository.Delete(id);
             return RedirectToAction("Index");
         }
 
