@@ -17,7 +17,15 @@ namespace DataAccessLayer.Repositories
         {
             if (person.Id <= 0)
             {
-                person.Id = _people.Max(c => c.Id) + 1;
+                // if (_people.Count() <= 0)
+                if (!_people.Any())
+                {
+                    person.Id = 1;
+                }
+                else
+                {
+                    person.Id = _people.Max(c => c.Id) + 1;
+                }
                 _people.Add(person);
             }
             else
