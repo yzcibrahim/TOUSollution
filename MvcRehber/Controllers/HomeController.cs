@@ -23,9 +23,24 @@ namespace MvcRehber.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string order, string searchBox)
         {
             List<Person> liste = _personRepository.List();
+            
+             if(order=="name")
+                liste = liste.OrderBy(c => c.Name).ToList();
+            else if(order=="surname")
+                liste = liste.OrderBy(c => c.Surname).ToList();
+             else
+                liste = liste.OrderBy(c => c.Id).ToList();
+
+             if(!String.IsNullOrEmpty(searchBox))
+            {
+                // liste = liste.Where(c => c.Name == searchBox || c.Surname==searchBox).ToList();
+                //  liste = liste.Where(c => c.Name.Contains(searchBox) || c.Surname.Contains(searchBox)).ToList();
+                liste = liste.Where(c => c.Name.StartsWith(searchBox) || c.Surname.StartsWith(searchBox)).ToList();
+            }
+
             return View(liste);
             #region MyRegion
             //KisiTest mdl = new KisiTest();
