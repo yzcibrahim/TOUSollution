@@ -32,7 +32,7 @@
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" onclick="return validateForm()" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -44,4 +44,23 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    function validateForm() {
+       let name=$('#Name').val();
+        let surname = $('#Surname').val();
+
+        if (name == "") {
+            alert("isim boş olamaz");
+            return false;
+        }
+        else if(surname == "")
+        {
+            alert("soyisim boş olamaz");
+            return false;
+        }
+        return true;
+    }
+
+</script>
+
 }

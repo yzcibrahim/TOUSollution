@@ -63,6 +63,7 @@ namespace MvcRehber.Controllers
         [HttpPost]
         public IActionResult CreatePerson(Person person)
         {
+            
             _personRepository.AddOrUpdate(person);
             return RedirectToAction("Index");
         }
