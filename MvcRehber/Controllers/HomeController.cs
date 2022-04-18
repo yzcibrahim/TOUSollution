@@ -52,6 +52,7 @@ namespace MvcRehber.Controllers
         [HttpGet]
         public IActionResult CreatePerson(int? id)
         {
+            //ViewData["valMessages"] = "";
             Person model = new Person();
             if(id.HasValue && id>0)
             {
@@ -63,7 +64,14 @@ namespace MvcRehber.Controllers
         [HttpPost]
         public IActionResult CreatePerson(Person person)
         {
+           // ViewBag.valmes = "asdasd";
+            //ViewData["valMessages"] = "";
             
+            if (!ModelState.IsValid)
+            {
+                return View(person);
+            }
+
             _personRepository.AddOrUpdate(person);
             return RedirectToAction("Index");
         }
