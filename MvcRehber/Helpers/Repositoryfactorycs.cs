@@ -24,6 +24,7 @@ namespace MvcRehber.Helpers
                         // _repoPErson = new PersonRepositoryJson();
                         PeopleDbContext context = new PeopleDbContext(optionsBuilder.Options);
                         _repoPErson = new PersonRepository(context);
+                        
                     }
                     return _repoPErson;
                 }

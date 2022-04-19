@@ -6,6 +6,15 @@ namespace OOP
     {
         static void Main(string[] args)
         {
+            Insan i1=new Insan() { Ad = "ibrahim", Soyad = "yazıcı" };
+            Hayvan h1 = new Hayvan() { Ad = "tom", Soyad = "cat" };
+            Konusturma k = new Konusturma(h1);
+            k.konus();
+
+            Konusturma k1 = new Konusturma(i1);
+
+            return;
+
             Console.WriteLine("Hello World!");
 
             ICanli canli1 = new Hayvan();
