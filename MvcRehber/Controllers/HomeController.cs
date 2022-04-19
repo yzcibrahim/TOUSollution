@@ -41,7 +41,15 @@ namespace MvcRehber.Controllers
                 liste = liste.Where(c => c.Name.StartsWith(searchBox) || c.Surname.StartsWith(searchBox)).ToList();
             }
 
-            return View(liste);
+            List<PersonViewModel> model = new List<PersonViewModel>();
+            foreach(var item in liste)
+            {
+                PersonViewModel pw = new PersonViewModel() { Id = item.Id, Name = item.Name, Phone = item.Phone };
+                model.Add(pw);
+            }
+
+
+            return View(model);
             #region MyRegion
             //KisiTest mdl = new KisiTest();
             //mdl.Ad = "ibrahim";
@@ -53,11 +61,15 @@ namespace MvcRehber.Controllers
         public IActionResult CreatePerson(int? id)
         {
             //ViewData["valMessages"] = "";
-            Person model = new Person();
+            PersonViewModel model = new PersonViewModel();
             if(id.HasValue && id>0)
             {
                 List<Person> people=_personRepository.List();
-                model = people.First(c => c.Id == id);
+                var person = people.First(c => c.Id == id);
+                model.Id = person.Id;
+                model.Name = person.Name;
+                model.Phone = person.Phone;
+                model.Surname = person.Surname;
             }
             return View(model);
         }

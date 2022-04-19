@@ -1,4 +1,4 @@
-﻿@model List<Person>
+﻿@model List<PersonViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -46,7 +46,7 @@
             <th></th>
         </tr>
         @{
-            foreach (Person kisi in Model)
+            foreach (PersonViewModel kisi in Model)
             {
                 <tr>
                     <td>@kisi.Id</td>
