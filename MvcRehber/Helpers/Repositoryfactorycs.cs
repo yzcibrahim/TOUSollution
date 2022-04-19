@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Repositories;
+﻿using DataAccessLayer;
+using DataAccessLayer.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ namespace MvcRehber.Helpers
 {
     public  class Repositoryfactory
     {
-        static PersonRepositoryJson _repoPErson;
+        static IRepositoryPerson _repoPErson;
         public static  IRepositoryPerson CreateRepo(string tip)
         {
             if (_repoPErson == null)
@@ -17,7 +19,11 @@ namespace MvcRehber.Helpers
                 {
                     lock (new object())
                     {
-                        _repoPErson = new PersonRepositoryJson();
+                        var optionsBuilder = new DbContextOptionsBuilder<PeopleDbContext>();
+                        optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TuPeopleInfoDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+                        // _repoPErson = new PersonRepositoryJson();
+                        PeopleDbContext context = new PeopleDbContext(optionsBuilder.Options);
+                        _repoPErson = new PersonRepository(context);
                     }
                     return _repoPErson;
                 }

@@ -1,3 +1,4 @@
+using DataAccessLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +24,8 @@ namespace MvcRehber
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<NewsDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+            services.AddDbContext<PeopleDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
             services.AddControllersWithViews();
         }
 
