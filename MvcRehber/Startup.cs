@@ -1,4 +1,5 @@
 using DataAccessLayer;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace MvcRehber
             services.AddDbContext<PeopleDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
             services.AddControllersWithViews();
+           services.AddScoped<IRepositoryPerson, PersonRepository>();
+           //    services.AddScoped<IRepositoryPerson, PersonRepositoryJson>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

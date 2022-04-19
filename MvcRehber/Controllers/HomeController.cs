@@ -16,10 +16,11 @@ namespace MvcRehber.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         IRepositoryPerson _personRepository;
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IRepositoryPerson repositoryPerson)
         {
             _logger = logger;
-            _personRepository = Repositoryfactory.CreateRepo("PERSON");
+            _personRepository = repositoryPerson;
+           // _personRepository = Repositoryfactory.CreateRepo("PERSON");
         }
 
         [HttpGet]
