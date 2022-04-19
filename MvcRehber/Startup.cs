@@ -29,7 +29,13 @@ namespace MvcRehber
             options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
             services.AddControllersWithViews();
            services.AddScoped<IRepositoryPerson, PersonRepository>();
-           //    services.AddScoped<IRepositoryPerson, PersonRepositoryJson>();
+
+            // services.AddTransient<Test>();//whenever u need this service create a new instance of this service
+            // services.AddSingleton<Test>();//onece u need this service create it , if u need this service again use the one that u have create already
+            //    services.AddScoped<IRepositoryPerson, PersonRepositoryJson>();
+            services.AddTransient<Test>();
+            services.AddTransient<Test1>();
+            services.AddScoped<Deneme,Deneme>();//Create only one instance for each Request scope
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

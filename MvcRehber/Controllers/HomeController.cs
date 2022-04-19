@@ -16,16 +16,22 @@ namespace MvcRehber.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         IRepositoryPerson _personRepository;
-        public HomeController(ILogger<HomeController> logger,IRepositoryPerson repositoryPerson)
+        Test _tst;
+        Test1 _tst1;
+        public HomeController(ILogger<HomeController> logger,IRepositoryPerson repositoryPerson, Test tst,Test1 tst1)
         {
             _logger = logger;
             _personRepository = repositoryPerson;
-           // _personRepository = Repositoryfactory.CreateRepo("PERSON");
+            // _personRepository = Repositoryfactory.CreateRepo("PERSON");
+            _tst = tst;
+            _tst1 = tst1;
         }
 
         [HttpGet]
         public IActionResult Index(string order, string searchBox)
         {
+            
+            return RedirectToAction("Index", "Test");
             List<Person> liste = _personRepository.List();
             
              if(order=="name")
